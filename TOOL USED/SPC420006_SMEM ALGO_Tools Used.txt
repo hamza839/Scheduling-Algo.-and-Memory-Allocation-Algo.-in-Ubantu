@@ -1,0 +1,4 @@
+The Tools used in SMEM ALGO. are:
+	1. VMware Workstation Pro.
+	2. Ubuntu Software (Linux)
+	3. Python3 

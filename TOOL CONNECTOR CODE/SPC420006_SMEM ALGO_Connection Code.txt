@@ -1,0 +1,82 @@
+from  tkinter import * 
+from tkinter import ttk
+from tkinter import messagebox
+
+root = Tk()
+root.title("Scheduling Algorithm")
+root.geometry("400x300")
+#________________________________________MAIN.PY________________________________
+def selected(event):
+    global uivalue 
+    uivalue  = clicked.get()
+
+
+def openOption():
+    if uivalue  == 'Scheduling Algorithms':
+        open_Schedulewindow()         
+    elif uivalue  == 'Memory Managment Algorithms':
+        open_Memorywindow()
+   
+        
+def open_Schedulewindow():
+    global top2 
+    global dis1
+    global dis2
+    global dis3
+
+    top2 = Toplevel()
+    top2.title("Scheduling")
+    top2.geometry("1200x600")
+    
+    Rframe = Frame(top2,width=200, height=100,borderwidth = 1,background="black")
+    Rframe.grid(column=1,row=10)
+    
+    dis1 =Label(Rframe,text=disvar1 ,font=(10))
+    dis2= Label(Rframe,text=disvar2 ,font=(10))
+    dis3= Label(Rframe,text=disvar3,font=(10))
+    
+    EmptyRBox()
+    
+    maincomp()
+    Back(top2)
+    
+
+def open_Memorywindow():
+    global top1
+    top1 = Toplevel()
+    top1.title("Memory")
+    top1.geometry("1200x600")
+    Memorymaincomp()
+    Back(top1)
+    
+def Back(top): 
+    BackBtn=Button(top,text="Back", pady=10,width=10,bg="Black",fg="White",font=(20) , command = top.destroy)
+    BackBtn.grid(column=2, row=10, padx=50, pady=15)
+    
+def quit():
+    root.destroy()
+def combo():
+    global clicked
+    values = [' ',  
+              'Scheduling Algorithms', 
+              'Memory Managment Algorithms' ]
+
+    clicked = StringVar()
+    clicked.set(values[0])
+    
+    label3 = Label(root,text="Select Algorithm Type" ,font=(28),pady=10)
+    label3.grid(column=6, row=2)
+
+    drop = OptionMenu(root, clicked , *values, command=selected)
+    drop.grid(column=6, row=3, padx=100, pady=15)
+    
+    GoBtn=Button(root,text="Go", pady=10,width=20,bg="Black",fg="White",font=(20) , command =  openOption)
+    GoBtn.grid(column=6, row=7, padx=50, pady=15)
+	
+    QuitBtn=Button(root,text="Quit", pady=10,width=20,bg="Black",fg="White",font=(20) , command = root.destroy)
+    QuitBtn.grid(column=6, row=8,  pady=15)	
+    
+ 
+   
+combo()
+root.mainloop()
